@@ -35,22 +35,20 @@ node* reverse(node* head) {
     while(main_list != NULL) {
 
         node* temp = main_list;
-        
         main_list = main_list->next;
-        
         temp->next = reversed_list;
-        
         reversed_list = temp;
+        
     }
     
     return reversed_list;
 }
 
 
-void insertToPlace(node* head, int val, int place) {
+void insertToPlace(node* head, int value, int place) {
 
     node* newNode = (node*) malloc(sizeof(node));
-    newNode->data = val;
+    newNode->data = value;
     newNode->next = NULL;
 
     node* current = head;
@@ -65,45 +63,45 @@ void insertToPlace(node* head, int val, int place) {
     current->next = newNode;
 }
 
-void display(node* t) {
+void display(node* traverse) {
     printf("\nPrinting your linked list.......");
-    while(t != NULL) {
-        printf("%d ", t->data);
-        t = t->next;
+    while(traverse != NULL) {
+        printf("%d ", traverse->data);
+        traverse = traverse->next;
     }
     printf("\n");
 }
 
 int main() {
     node *root = NULL;
-    int ch, ele, place;
+    int choice, element, place;
 
     while(1) {
         printf("\nMenu: 1. insert at front, 2. reverse list 3. Insert to place 0. exit: ");
-        scanf("%d", &ch);
+        scanf("%d", &choice);
 
-        if(ch == 0) {
+        if(choice == 0) {
             printf("\nGOOD BYE>>>>\n");
             break;
         }
-        if(ch == 1) {
+        if(choice == 1) {
             printf("\nEnter data (an integer): ");
-            scanf("%d", &ele);
-            root = insert_front(root, ele);
+            scanf("%d", &element);
+            root = insert_front(root, element);
             display(root);
         }
-        if(ch == 2) {
+        if(choice == 2) {
             root = reverse(root);
             printf("\nList reversed.");
             display(root);
         }
-        if(ch == 3) {
+        if(choice == 3) {
             printf("\nEnter data (an integer) and place (>1) separated by space: ");
-            scanf("%d %d", &ele, &place);
+            scanf("%d %d", &element, &place);
             if(place <= 1) {
                  printf("\nList is empty or place is not valid");
             } else {
-                 insertToPlace(root, ele, place);
+                 insertToPlace(root, element, place);
             }
             display(root);
         }
